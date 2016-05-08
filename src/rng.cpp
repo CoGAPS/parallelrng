@@ -9,9 +9,17 @@ class Rnorm_class {
     boost::normal_distribution<> nd;
     boost::variate_generator<boost::mt19937&, boost::normal_distribution<> > norm_rnd;
 
+    int seed_method(int seed=1) {
+        if (seed < 1) {
+            return std::time(0);
+        } else {
+            return seed;
+        }
+    }
+
   public:
-    Rnorm_class(int seed=1, double mean=0.0, double variance=1.0):
-       rng(seed), 
+    Rnorm_class(int seed=-1, double mean=0.0, double variance=1.0):
+       rng(seed_method(seed)), 
        nd(mean, variance),
        norm_rnd(rng, nd) { }
 
@@ -29,7 +37,7 @@ class Rnorm_class {
 };
 
 // [[Rcpp::export]]
-void test_boost(int seed=1) {
+void test_boost(int seed=-1) {
     Rnorm_class draws(seed);
 
     Rf_PrintValue(draws.draw(4));
