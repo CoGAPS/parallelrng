@@ -5,25 +5,13 @@
 
 using namespace Rcpp;
 
-// rnorm_boost
-Rcpp::NumericVector rnorm_boost(int n, int seed);
-RcppExport SEXP parallelrng_rnorm_boost(SEXP nSEXP, SEXP seedSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject __result;
-    Rcpp::RNGScope __rngScope;
-    Rcpp::traits::input_parameter< int >::type n(nSEXP);
-    Rcpp::traits::input_parameter< int >::type seed(seedSEXP);
-    __result = Rcpp::wrap(rnorm_boost(n, seed));
-    return __result;
-END_RCPP
-}
 // test_boost
-int test_boost();
-RcppExport SEXP parallelrng_test_boost() {
+void test_boost(int seed);
+RcppExport SEXP parallelrng_test_boost(SEXP seedSEXP) {
 BEGIN_RCPP
-    Rcpp::RObject __result;
     Rcpp::RNGScope __rngScope;
-    __result = Rcpp::wrap(test_boost());
-    return __result;
+    Rcpp::traits::input_parameter< int >::type seed(seedSEXP);
+    test_boost(seed);
+    return R_NilValue;
 END_RCPP
 }
