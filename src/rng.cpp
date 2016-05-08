@@ -37,9 +37,8 @@ class Rnorm_class {
 };
 
 // [[Rcpp::export]]
-void test_boost(int seed=-1) {
+Rcpp::NumericVector rnorm_cpp(int seed=-1, int n=1) {
     Rnorm_class draws(seed);
 
-    Rf_PrintValue(draws.draw(4));
-    Rf_PrintValue(draws.draw(4));
+    return draws.draw(n);
 }
