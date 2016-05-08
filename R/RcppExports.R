@@ -5,3 +5,7 @@ rnorm_boost <- function(n = 1L, seed = -1L) {
     .Call('parallelrng_rnorm_boost', PACKAGE = 'parallelrng', n, seed)
 }
 
+test_boost <- function() {
+    .Call('parallelrng_test_boost', PACKAGE = 'parallelrng')
+}
+

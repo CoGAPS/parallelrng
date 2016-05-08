@@ -17,3 +17,13 @@ BEGIN_RCPP
     return __result;
 END_RCPP
 }
+// test_boost
+int test_boost();
+RcppExport SEXP parallelrng_test_boost() {
+BEGIN_RCPP
+    Rcpp::RObject __result;
+    Rcpp::RNGScope __rngScope;
+    __result = Rcpp::wrap(test_boost());
+    return __result;
+END_RCPP
+}
