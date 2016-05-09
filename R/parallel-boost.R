@@ -1,10 +1,16 @@
 rnorm_par <- function(n=1, chains=1, seed=-1) {
-    chains <- matrix(0, n, chains)
+    chains.list <- list()
 
-    for (i in 1:chains) {
-        X <- rnorm_cpp(n=n, seed=seed * i)
-        chains[, i] <- x
+    if (seed < 1) {
+        set_seed <- rpois(1, 1000)
+    } else {
+        set_seed <- seed
     }
 
-    return(chains)
+    for (i in seq_len(chains)) {
+        X <- rnorm_cpp(n=n, seed=set_seed * i)
+        chains.list[[i]] <- X
+    }
+
+    return(chains.list)
 }
