@@ -1,5 +1,6 @@
 #' @useDynLib parallelrng
 #' @importFrom Rcpp sourceCpp
-#' importFrom doParallel makeCluster registerDoParallel
-#' importFrom foreach foreach %dopar%
+#' @importFrom parallel makeCluster stopCluster clusterExport
+#' @importFrom doParallel registerDoParallel
+#' @importFrom foreach foreach %dopar%
 NULL
