@@ -7,10 +7,9 @@ Depends:
     R (>= 3.2.5),
     Rcpp (>= 0.12.4)
 Imports:
-    doParallel,
-    foreach,
     Rcpp
-LinkingTo: Rcpp,
+LinkingTo: 
+    Rcpp,
     BH
 License: What license is it under?
 Encoding: UTF-8
